@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  BALANCE_HOLDER
+  GOV_ORG
+  DSNS
+  REGIONAL
+  DEPARTMENT
+}
+
+enum OrganizationType {
+  DSNS
+  REGIONAL
+  DEPARTMENT
+  PRIVATE
+}
+
+enum ShelterType {
+  STATIC
+  MOBILE
+}
+
+enum AccessType {
+  PUBLIC
+  PRIVATE
+}
+
+enum ShelterStatus {
+  NEED
+  PROJECT
+  CONSTRUCTION
+  OPERATION
+  MODERNIZATION
+  REPAIR
+  CONSERVATION
+  MISUSE
+  DESTROYED
+}
+
+enum AccountingStatus {
+  NEW
+  IN_PROGRESS
+  ACCOUNTED
+  REMOVED
+  REJECTED
+}
+
+enum RecordStatus {
+  DRAFT
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+enum ShelterRequestStatus {
+  NEW
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id          String            @id @default(uuid())
+  email       String            @unique
+  password    String
+  role        UserRole
+  orgId       String?
+  org         Organization?     @relation(fields: [orgId], references: [id], onDelete: SetNull)
+  requests     ShelterRequest[]  @relation("ShelterRequestCreatedBy")
+  reviewedRequests ShelterRequest[] @relation("ShelterRequestReviewedBy")
+  inspections  Inspection[]     @relation("InspectionCreatedBy")
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+}
+
+model Organization {
+  id        String           @id @default(uuid())
+  name      String
+  type      OrganizationType
+  parentId  String?
+  parent    Organization?    @relation("OrganizationHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children  Organization[]   @relation("OrganizationHierarchy")
+  users     User[]
+  shelters  Shelter[]
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+}
+
+model Shelter {
+  id            String        @id @default(uuid())
+  name          String
+  type          ShelterType
+  accessType    AccessType
+  capacity      Int
+  latitude      Float
+  longitude     Float
+  status        ShelterStatus @default(NEED)
+  accountingStatus AccountingStatus @default(NEW)
+  recordStatus  RecordStatus  @default(DRAFT)
+  ownerOrgId    String
+  ownerOrg      Organization  @relation(fields: [ownerOrgId], references: [id], onDelete: Restrict)
+  sourceRequestId String?      @unique
+  sourceRequest ShelterRequest? @relation(fields: [sourceRequestId], references: [id], onDelete: SetNull)
+  inspections   Inspection[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model ShelterRequest {
+  id               String               @id @default(uuid())
+  createdById      String
+  reviewedById     String?
+  data             Json
+  status           ShelterRequestStatus @default(NEW)
+  rejectionReason   String?
+  reviewedAt       DateTime?
+  createdBy        User                 @relation("ShelterRequestCreatedBy", fields: [createdById], references: [id], onDelete: Restrict)
+  reviewedBy      User?                @relation("ShelterRequestReviewedBy", fields: [reviewedById], references: [id], onDelete: SetNull)
+  shelter         Shelter?
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+
+  @@index([status])
+  @@index([createdById])
+}
+
+model Inspection {
+  id         String    @id @default(uuid())
+  shelterId  String
+  result     String
+  createdBy  String
+  shelter    Shelter   @relation(fields: [shelterId], references: [id], onDelete: Cascade)
+  createdByUser User    @relation("InspectionCreatedBy", fields: [createdBy], references: [id], onDelete: Restrict)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}

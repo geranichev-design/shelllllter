@@ -1,0 +1,179 @@
+{
+  "$extensions": {
+    "com.figma.modeName": "light"
+  },
+  "typography": {
+    "size": {
+      "2xs": {
+        "$type": "dimension",
+        "$value": "10px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "xs": {
+        "$type": "dimension",
+        "$value": "11px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "13px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "base": {
+        "$type": "dimension",
+        "$value": "14px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "15px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "18px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "3xl": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      },
+      "4xl": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$extensions": {
+          "com.figma.scopes": ["ALL_SCOPES"]
+        }
+      }
+    }
+  },
+  "spacing": {
+    "px": {
+      "$type": "dimension",
+      "$value": "1px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "0.5": {
+      "$type": "dimension",
+      "$value": "2px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "1.5": {
+      "$type": "dimension",
+      "$value": "6px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "2.5": {
+      "$type": "dimension",
+      "$value": "10px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "32px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "40px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$extensions": {
+        "com.figma.scopes": ["ALL_SCOPES"]
+      }
+    }
+  }
+}

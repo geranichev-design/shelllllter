@@ -1,0 +1,28 @@
+{
+  "name": "shelter-registry",
+  "private": true,
+  "version": "0.1.0",
+  "devDependencies": {
+    "@prisma/client": "^5.22.0",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^2.4.3",
+    "prisma": "^5.22.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "db:up": "sh -c 'docker ps --format \"{{.Ports}}\" | grep -q \"5432->5432\" && exit 0; docker compose -p shelter-registry up -d db'",
+    "db:down": "docker compose -p shelter-registry down",
+    "dev:mock": "pnpm db:up && pnpm prisma:generate && pnpm prisma:migrate && pnpm prisma:seed && (pnpm dev:backend & pnpm dev:frontend & wait)",
+    "dev:backend": "pnpm --filter backend dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "build:backend": "pnpm --filter backend build",
+    "build:frontend": "pnpm --filter frontend build",
+    "prisma:generate": "pnpm --filter backend prisma:generate",
+    "prisma:migrate": "pnpm --filter backend prisma:migrate",
+    "prisma:seed": "pnpm --filter backend prisma:seed"
+  },
+  "packageManager": "pnpm@10.5.0+sha512.11106a5916c7406fe4b8cb8e3067974b8728f47308a4f5ac5e850304afa6f57e2847d7950dfe78877d8d36bfb401d381c4215db3a4c3547ffa63c14333a6fa51"
+}

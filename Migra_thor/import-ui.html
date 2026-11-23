@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      color: #0a0a0a;
+      background: #ffffff;
+      padding: 16px;
+      width: 324px;
+    }
+    h2 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    p  { font-size: 12px; color: #717182; line-height: 1.45; margin-bottom: 12px; }
+
+    .section { margin-bottom: 18px; }
+    .section-title {
+      font-size: 11px; font-weight: 600; color: #717182;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    button {
+      width: 100%; padding: 9px 14px;
+      border-radius: 8px; border: none; cursor: pointer;
+      font-size: 13px; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-primary { background: #2b7fff; color: #fff; }
+    .btn-primary:hover { background: #1a6ae8; }
+    .btn-primary:disabled { background: #bedbff; cursor: default; }
+    .btn-secondary { background: #f3f3f5; color: #0a0a0a; margin-top: 6px; }
+    .btn-secondary:hover { background: #e9ebef; }
+    .btn-outline {
+      background: #ffffff; color: #0a0a0a; margin-top: 6px;
+      border: 1px solid #d9dde5;
+    }
+    .btn-outline:hover { background: #f9fafb; }
+
+    .drop-zone {
+      border: 1.5px dashed #bedbff;
+      border-radius: 10px;
+      padding: 18px;
+      text-align: center;
+      color: #717182;
+      font-size: 12px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      background: #fafcff;
+    }
+    .drop-zone:hover, .drop-zone.drag-over { border-color: #2b7fff; background: #eff6ff; }
+
+    textarea {
+      width: 100%;
+      min-height: 74px;
+      resize: vertical;
+      border: 1px solid #d9dde5;
+      border-radius: 8px;
+      padding: 9px 10px;
+      font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: #101828;
+      background: #fbfcfe;
+      outline: none;
+    }
+    textarea:focus { border-color: #2b7fff; background: #ffffff; }
+
+    #file-input { display: none; }
+    #manual-wrap { display: none; margin-top: 8px; }
+
+    .status {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+      display: none;
+      white-space: pre-wrap;
+    }
+    .status.success { background: #e6f9ef; color: #087a32; }
+    .status.error   { background: #fde8ec; color: #b91436; }
+    .status.info    { background: #eff6ff; color: #1d64c8; }
+
+    .divider {
+      border: none; border-top: 1px solid #e5e7eb;
+      margin: 14px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Migra Thor → Figma</h2>
+  <p>Копіює DOM відкритої сторінки у JSON і збирає його як редаговані Figma-шари.</p>
+
+  <div class="section">
+    <div class="section-title">1 · Відкрита сторінка</div>
+    <button class="btn-primary" id="btn-copy-script">Скопіювати capture-скрипт</button>
+    <button class="btn-secondary" id="btn-paste">Імпортувати з clipboard</button>
+    <p style="margin-top:6px;margin-bottom:0">
+      Запусти скопійований скрипт у консолі потрібної сторінки. Він покладе макет у clipboard.
+    </p>
+    <div id="manual-wrap">
+      <textarea id="manual-json" placeholder="Встав JSON з clipboard сюди"></textarea>
+      <button class="btn-outline" id="btn-import-manual">Імпортувати з поля</button>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <div class="section-title">2 · Fetch з localhost</div>
+    <button class="btn-outline" id="btn-fetch">
+      Fetch з http://localhost:3000
+    </button>
+    <p style="margin-top:6px;margin-bottom:0">Працює тільки якщо додаток віддає /figma-export.json.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <div class="section-title">3 · JSON файл</div>
+    <div class="drop-zone" id="drop-zone">
+      <div>Перетягни <strong>figma-layers-*.json</strong></div>
+      <div>або</div>
+      <div style="color:#2b7fff;font-weight:500;margin-top:4px">Обрати файл</div>
+    </div>
+    <input type="file" id="file-input" accept=".json,application/json" />
+  </div>
+
+  <div class="status" id="status"></div>
+
+  <script>
+    const PAGE_CAPTURE_SCRIPT = String.raw`(async () => {
+  const MAX_LAYERS = 3500;
+  const MAX_TEXT_CHARS = 800;
+  const MAX_IMAGE_SIDE = 1200;
+  const MAX_ROOT_HEIGHT = 24000;
+  const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEMPLATE", "HEAD", "META", "LINK"]);
+  const layers = [];
+  const round = (value) => Math.round(value * 100) / 100;
+  const pageX = (left) => round(left + window.scrollX);
+  const pageY = (top) => round(top + window.scrollY);
+  const px = (value) => {
+    const parsed = Number.parseFloat(value);
+    return Number.isFinite(parsed) ? parsed : 0;
+  };
+  const colorToFill = (value) => {
+    if (!value || value === "transparent") return null;
+    let match = value.match(/rgba?\(([^)]+)\)/i);
+    if (match) {
+      const parts = match[1].trim().split(/[\s,\/]+/).filter(Boolean);
+      const r = Number.parseFloat(parts[0]);
+      const g = Number.parseFloat(parts[1]);
+      const b = Number.parseFloat(parts[2]);
+      const a = parts[3] == null ? 1 : Number.parseFloat(parts[3]);
+      if (![r, g, b, a].every(Number.isFinite) || a <= 0) return null;
+      return { type: "SOLID", color: { r: r / 255, g: g / 255, b: b / 255 }, opacity: Math.min(a, 1) };
+    }
+    match = value.match(/color\(srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\)/i);
+    if (match) {
+      const a = match[4] == null ? 1 : Number.parseFloat(match[4]);
+      if (!Number.isFinite(a) || a <= 0) return null;
+      return {
+        type: "SOLID",
+        color: {
+          r: Math.min(Number.parseFloat(match[1]), 1),
+          g: Math.min(Number.parseFloat(match[2]), 1),
+          b: Math.min(Number.parseFloat(match[3]), 1),
+        },
+        opacity: Math.min(a, 1),
+      };
+    }
+    return null;
+  };
+  const layerBase = (type, name, rect, style) => ({
+    type,
+    name,
+    x: pageX(rect.left),
+    y: pageY(rect.top),
+    width: round(rect.width),
+    height: round(rect.height),
+    fills: [],
+    strokes: [],
+    strokeWeight: 0,
+    cornerRadius: 0,
+    opacity: Number.isFinite(px(style.opacity)) ? px(style.opacity) : 1,
+  });
+  const pushLayer = (layer) => {
+    if (layers.length >= MAX_LAYERS) return false;
+    if (layer.width < 1 || layer.height < 1) return false;
+    if (layer.y > MAX_ROOT_HEIGHT) return false;
+    layers.push(layer);
+    return true;
+  };
+  const visibleElement = (el, rect, style) => {
+    if (SKIP_TAGS.has(el.tagName)) return false;
+    if (style.display === "none" || style.visibility === "hidden") return false;
+    if (px(style.opacity) === 0) return false;
+    return rect.width >= 1 && rect.height >= 1;
+  };
+  const standaloneControlLabel = (el) => {
+    if (!(el instanceof HTMLLabelElement)) return false;
+    if (el.querySelector("input, select, textarea")) return false;
+    if (!el.htmlFor) return false;
+    const target = document.getElementById(el.htmlFor);
+    return target instanceof HTMLInputElement || target instanceof HTMLSelectElement || target instanceof HTMLTextAreaElement;
+  };
+  const nameFor = (el) => {
+    const id = el.id ? "#" + el.id : "";
+    const className = typeof el.className === "string" && el.className.trim()
+      ? "." + el.className.trim().split(/\s+/).slice(0, 3).join(".")
+      : "";
+    return el.tagName.toLowerCase() + id + className;
+  };
+  const addElementBox = (el, rect, style) => {
+    if (el === document.documentElement || el === document.body) return;
+    const fill = colorToFill(style.backgroundColor);
+    const borderFill = colorToFill(style.borderTopColor);
+    const borderWidth = Math.max(px(style.borderTopWidth), px(style.borderRightWidth), px(style.borderBottomWidth), px(style.borderLeftWidth));
+    const radius = Math.max(px(style.borderTopLeftRadius), px(style.borderTopRightRadius), px(style.borderBottomRightRadius), px(style.borderBottomLeftRadius));
+    const hasFill = !!fill;
+    const hasStroke = !!borderFill && borderWidth > 0;
+    if (!hasFill && !hasStroke && radius === 0) return;
+    const layer = layerBase("RECTANGLE", nameFor(el), rect, style);
+    layer.fills = fill ? [fill] : [];
+    layer.strokes = hasStroke ? [borderFill] : [];
+    layer.strokeWeight = hasStroke ? round(borderWidth) : 0;
+    layer.cornerRadius = round(radius);
+    pushLayer(layer);
+  };
+  const fontWeight = (value) => {
+    if (value === "bold") return 700;
+    if (value === "normal") return 400;
+    const parsed = Number.parseInt(value, 10);
+    return Number.isFinite(parsed) ? parsed : 400;
+  };
+  const addTextLayer = (text, rect, style, name = "Text") => {
+    const content = text.replace(/\s+/g, " ").trim();
+    if (!content || rect.width < 1 || rect.height < 1) return;
+    const color = colorToFill(style.color);
+    const layer = layerBase("TEXT", name, rect, style);
+    layer.characters = content.slice(0, MAX_TEXT_CHARS);
+    layer.fontSize = px(style.fontSize) || 14;
+    layer.fontWeight = fontWeight(style.fontWeight);
+    layer.fontFamily = (style.fontFamily || "Inter").split(",")[0].replace(/["']/g, "").trim() || "Inter";
+    layer.lineHeight = px(style.lineHeight) || round(layer.fontSize * 1.2);
+    const spacing = px(style.letterSpacing);
+    if (Number.isFinite(spacing)) layer.letterSpacing = spacing;
+    layer.textColor = color ? color.color : { r: 0, g: 0, b: 0 };
+    pushLayer(layer);
+  };
+  const addTextNode = (node, parentStyle) => {
+    const content = node.textContent || "";
+    if (!content.trim()) return;
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    const rect = range.getBoundingClientRect();
+    range.detach();
+    addTextLayer(content, rect, parentStyle);
+  };
+  const imageToDataUrl = async (img) => {
+    if (!img.complete || !img.naturalWidth || !img.naturalHeight) return "";
+    const scale = Math.min(1, MAX_IMAGE_SIDE / Math.max(img.naturalWidth, img.naturalHeight));
+    const width = Math.max(1, Math.round(img.naturalWidth * scale));
+    const height = Math.max(1, Math.round(img.naturalHeight * scale));
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return "";
+    try {
+      ctx.drawImage(img, 0, 0, width, height);
+      return canvas.toDataURL("image/png");
+    } catch (_) {
+      return "";
+    }
+  };
+  const addImageLayer = async (img, rect, style) => {
+    const dataUrl = await imageToDataUrl(img);
+    const layer = layerBase(dataUrl ? "IMAGE" : "RECTANGLE", nameFor(img), rect, style);
+    layer.fills = colorToFill(style.backgroundColor) ? [colorToFill(style.backgroundColor)] : [{ type: "SOLID", color: { r: 0.95, g: 0.96, b: 0.98 }, opacity: 1 }];
+    layer.cornerRadius = Math.max(px(style.borderTopLeftRadius), px(style.borderTopRightRadius), px(style.borderBottomRightRadius), px(style.borderBottomLeftRadius));
+    if (dataUrl) layer.imageData = dataUrl;
+    pushLayer(layer);
+    if (!dataUrl && img.alt) addTextLayer(img.alt, rect, style, "Image alt");
+  };
+  const addSvgLayer = (svg, rect, style) => {
+    const clone = svg.cloneNode(true);
+    clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    clone.setAttribute("width", String(Math.max(1, Math.round(rect.width))));
+    clone.setAttribute("height", String(Math.max(1, Math.round(rect.height))));
+    const layer = layerBase("SVG", nameFor(svg), rect, style);
+    layer.svg = new XMLSerializer().serializeToString(clone);
+    pushLayer(layer);
+  };
+  const addFormValue = (el, rect, style) => {
+    if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
+      addTextLayer(el.value || el.placeholder || "", rect, style, nameFor(el) + " value");
+    } else if (el instanceof HTMLSelectElement) {
+      addTextLayer(el.selectedOptions[0]?.text || "", rect, style, nameFor(el) + " value");
+    }
+  };
+  const walk = async (el) => {
+    const style = getComputedStyle(el);
+    const rect = el.getBoundingClientRect();
+    if (!visibleElement(el, rect, style)) return;
+    if (standaloneControlLabel(el)) return;
+    if (el instanceof SVGSVGElement) {
+      addSvgLayer(el, rect, style);
+      return;
+    }
+    if (el instanceof HTMLImageElement) await addImageLayer(el, rect, style);
+    else addElementBox(el, rect, style);
+    addFormValue(el, rect, style);
+    for (const child of el.childNodes) {
+      if (layers.length >= MAX_LAYERS) break;
+      if (child.nodeType === Node.TEXT_NODE) addTextNode(child, style);
+      else if (child.nodeType === Node.ELEMENT_NODE) await walk(child);
+    }
+  };
+  await walk(document.body);
+  const htmlStyle = getComputedStyle(document.documentElement);
+  const bodyStyle = getComputedStyle(document.body);
+  const rootFill = colorToFill(bodyStyle.backgroundColor) || colorToFill(htmlStyle.backgroundColor);
+  const rootWidth = Math.ceil(Math.max(document.documentElement.scrollWidth, document.body.scrollWidth, window.innerWidth));
+  const rootHeight = Math.ceil(Math.min(Math.max(document.documentElement.scrollHeight, document.body.scrollHeight, window.innerHeight), MAX_ROOT_HEIGHT));
+  const data = {
+    version: 1,
+    title: document.title || location.href,
+    viewport: { width: window.innerWidth, height: window.innerHeight },
+    root: {
+      type: "FRAME",
+      name: document.title || location.hostname || "Captured page",
+      x: 0,
+      y: 0,
+      width: rootWidth,
+      height: rootHeight,
+      fills: rootFill ? [rootFill] : [{ type: "SOLID", color: { r: 1, g: 1, b: 1 }, opacity: 1 }],
+      strokes: [],
+      strokeWeight: 0,
+      cornerRadius: 0,
+      opacity: 1,
+      overflow: true,
+      children: layers,
+    },
+  };
+  const text = JSON.stringify(data);
+  const fallbackCopy = () => {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.style.position = "fixed";
+    area.style.left = "-9999px";
+    document.body.appendChild(area);
+    area.focus();
+    area.select();
+    const ok = document.execCommand("copy");
+    area.remove();
+    return ok;
+  };
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (_) {
+    if (!fallbackCopy()) throw new Error("Clipboard copy failed");
+  }
+  console.info("[Migra Thor] Copied", layers.length, "layers for Figma import.");
+  alert("Migra Thor: скопійовано " + layers.length + " шарів. Повернись у Figma і натисни “Імпортувати з clipboard”.");
+})();`;
+
+    const status = document.getElementById('status');
+    const manualWrap = document.getElementById('manual-wrap');
+    const manualJson = document.getElementById('manual-json');
+
+    function showStatus(msg, type = 'info') {
+      status.textContent = msg;
+      status.className = `status ${type}`;
+      status.style.display = 'block';
+    }
+
+    function normalizeImportData(data) {
+      if (data && data.version === 1 && data.root) return data;
+      if (data && data.type === 'migra-thor-export' && data.data?.version === 1) return data.data;
+      throw new Error('Clipboard не містить Migra Thor JSON.');
+    }
+
+    function parseImportText(text) {
+      return normalizeImportData(JSON.parse(text.trim()));
+    }
+
+    function sendLayers(data) {
+      showStatus('Будую макет у Figma...', 'info');
+      parent.postMessage({ pluginMessage: { type: 'import', data } }, '*');
+    }
+
+    document.getElementById('btn-copy-script').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(PAGE_CAPTURE_SCRIPT);
+        showStatus('Capture-скрипт скопійовано. Відкрий сторінку, запусти його у DevTools Console, потім повернись сюди.', 'success');
+      } catch (err) {
+        manualWrap.style.display = 'block';
+        manualJson.value = PAGE_CAPTURE_SCRIPT;
+        manualJson.focus();
+        manualJson.select();
+        showStatus('Не вдалося записати в clipboard. Скрипт покладено в поле нижче.', 'error');
+      }
+    });
+
+    document.getElementById('btn-paste').addEventListener('click', async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        sendLayers(parseImportText(text));
+      } catch (err) {
+        manualWrap.style.display = 'block';
+        manualJson.focus();
+        const message = err instanceof Error ? err.message : String(err);
+        showStatus(`Не вдалося прочитати clipboard. Встав JSON у поле вручну.\n${message}`, 'error');
+      }
+    });
+
+    document.getElementById('btn-import-manual').addEventListener('click', () => {
+      try {
+        sendLayers(parseImportText(manualJson.value));
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        showStatus(message, 'error');
+      }
+    });
+
+    document.getElementById('btn-fetch').addEventListener('click', async () => {
+      showStatus('Fetching...', 'info');
+      const urls = [
+        'http://localhost:3000/figma-export.json',
+      ];
+      for (const url of urls) {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          sendLayers(normalizeImportData(await res.json()));
+          return;
+        } catch (_) {}
+      }
+      showStatus('Не вдалось зʼєднатись із localhost export.', 'error');
+    });
+
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('drag-over');
+    });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('drag-over');
+      const file = e.dataTransfer?.files?.[0];
+      if (file) readFile(file);
+    });
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0];
+      if (file) readFile(file);
+    });
+
+    function readFile(file) {
+      showStatus(`Читаю ${file.name}...`, 'info');
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          sendLayers(parseImportText(String(e.target.result || '')));
+        } catch (err) {
+          const message = err instanceof Error ? err.message : String(err);
+          showStatus(message || 'Невалідний JSON файл.', 'error');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    window.addEventListener('message', (e) => {
+      const msg = e.data?.pluginMessage;
+      if (!msg) return;
+      if (msg.type === 'done') {
+        showStatus(`Готово: ${msg.count} шарів створено на поточній сторінці Figma.`, 'success');
+      }
+      if (msg.type === 'error') {
+        showStatus(msg.message, 'error');
+      }
+    });
+  </script>
+</body>
+</html>
