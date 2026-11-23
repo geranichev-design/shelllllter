@@ -33,9 +33,17 @@ PORT=3010 pnpm dev:figma
 
 Open `http://127.0.0.1:3010`. The root commands `pnpm dev`, `pnpm build`, and
 `pnpm start` also target this demo. Explicit commands below retain the full local
-API workflow. `NEXT_PUBLIC_DEMO_MODE` defaults to disabled outside demo scripts;
-changing it requires restarting the dev server or rebuilding production assets.
+API workflow. Demo mode is enabled by default, including when Figma launches
+`apps/frontend` directly. Real API mode requires `NEXT_PUBLIC_DEMO_MODE=false`;
+`pnpm dev:frontend` and `pnpm build:frontend` set it explicitly. Changing the mode
+requires restarting the dev server or rebuilding production assets.
 The demo uses separate auth/data storage keys and `.next-figma*` build directories.
+
+If a previously cloned Figma Code layer still shows an email/password form or an
+API connection error, pull the latest `main` into that clone (or clone it again)
+and restart/rebuild the preview. A GitHub push does not update an existing Figma
+clone or a previously built preview automatically. For this prototype, remove a
+previously configured `NEXT_PUBLIC_DEMO_MODE=false` or set it to `true` in Figma.
 
 Validation: `pnpm test:demo`, `pnpm build:figma`, and `pnpm build:frontend`.
 

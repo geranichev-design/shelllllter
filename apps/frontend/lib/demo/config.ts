@@ -1,5 +1,6 @@
-// Enabled explicitly by the Figma launch scripts; regular API mode stays the default.
-export const isDemoMode = process.env.NEXT_PUBLIC_DEMO_MODE === 'true';
+// A cloned frontend must work even if Figma chooses its own launch command.
+// Real API access is an explicit opt-in, never an automatic fallback from demo.
+export const isDemoMode = process.env.NEXT_PUBLIC_DEMO_MODE !== 'false';
 export const DEMO_DATA_KEY = 'shelter-demo-data-v1';
 export const DEMO_AUTH_KEY = 'shelter-demo-auth-v1';
 

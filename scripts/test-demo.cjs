@@ -11,8 +11,11 @@ require.extensions['.ts'] = (module, filename) => {
   }).outputText, filename);
 };
 
-function load(demo = true, storage = new Map()) {
-  process.env.NEXT_PUBLIC_DEMO_MODE = String(demo);
+function load(demo = true, storage = new Map(), apiBaseUrl) {
+  if (demo === null) delete process.env.NEXT_PUBLIC_DEMO_MODE;
+  else process.env.NEXT_PUBLIC_DEMO_MODE = String(demo);
+  if (apiBaseUrl === undefined) delete process.env.NEXT_PUBLIC_API_BASE_URL;
+  else process.env.NEXT_PUBLIC_API_BASE_URL = apiBaseUrl;
   for (const key of Object.keys(require.cache)) {
     if (key.startsWith(path.resolve(__dirname, '../apps/frontend/lib') + path.sep)) delete require.cache[key];
   }
@@ -32,6 +35,15 @@ function load(demo = true, storage = new Map()) {
 
 const data = { name: 'Тестове укриття', type: 'STATIC', accessType: 'PUBLIC', capacity: 80, latitude: 50.45, longitude: 30.52, ownerOrgId: 'demo-organization-5' };
 const send = (method, body) => ({ method, body: JSON.stringify(body) });
+
+test('a clone with no demo flag opens demo even with a copied localhost API address', async () => {
+  for (const apiBaseUrl of [undefined, 'http://127.0.0.1:3001']) {
+    const app = load(null, new Map(), apiBaseUrl);
+    assert.equal(app.isDemoMode, true);
+    assert.equal(app.getStoredAuth().user.role, 'DSNS');
+    assert.equal((await app.apiFetch('/shelters')).length, 5);
+  }
+});
 
 test('preview opens without login, credentials or network and provides related records', async () => {
   const app = load();

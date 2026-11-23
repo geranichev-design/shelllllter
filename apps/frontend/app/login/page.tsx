@@ -1,5 +1,6 @@
 import { Home } from 'lucide-react';
 import { LoginForm } from './login-form';
+import { isDemoMode } from '@/lib/demo/config';
 
 export default function LoginPage() {
   return (
@@ -16,8 +17,8 @@ export default function LoginPage() {
         </div>
 
         <div className="mb-6">
-          <h1 className="text-[18px] font-semibold text-[var(--text-primary)]">Вхід до системи</h1>
-          <p className="mt-1 text-[12px] text-[var(--text-muted)]">Введіть свої облікові дані для доступу</p>
+          <h1 className="text-[18px] font-semibold text-[var(--text-primary)]">{isDemoMode ? 'Демоверсія реєстру' : 'Вхід до системи'}</h1>
+          <p className="mt-1 text-[12px] text-[var(--text-muted)]">{isDemoMode ? 'Перегляд із тестовими даними' : 'Введіть свої облікові дані для доступу'}</p>
         </div>
 
         <LoginForm />
