@@ -23,9 +23,11 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".next-build/types/**/*.ts",
+    ".next-figma-build/types/**/*.ts",
     ".next/types/**/*.ts",
     "next-env.d.ts",
-    ".next-build/types/**/*.ts"
+    ".next-figma/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

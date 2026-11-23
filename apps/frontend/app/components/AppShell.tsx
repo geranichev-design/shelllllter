@@ -1,5 +1,7 @@
 'use client';
 
+import { DemoControls } from './DemoControls';
+
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -715,6 +717,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         }
       />
       <main className="min-w-0 flex-1 overflow-x-hidden overflow-y-auto flex flex-col md:h-dvh">
+        <DemoControls />
         {authState === 'checking' ? (
           <div className="shrink-0 border-b border-[var(--border-subtle)] bg-[var(--hover)] px-4 py-2 text-[11px] text-[var(--text-secondary)] md:px-6">
             Перевіряємо сесію. Якщо це зависло, банер автоматично зміниться на повідомлення про

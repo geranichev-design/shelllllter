@@ -1,3 +1,5 @@
+import { createDemoAuth, DEMO_AUTH_KEY, isDemoMode } from './demo/config';
+
 export type StoredAuth = {
   accessToken: string;
   user: {
@@ -8,29 +10,39 @@ export type StoredAuth = {
   };
 };
 
+const authKey = isDemoMode ? DEMO_AUTH_KEY : 'shelter-auth';
+let demoAuth: StoredAuth = createDemoAuth();
+
 export function getStoredAuth(): StoredAuth | null {
   if (typeof window === 'undefined') {
     return null;
   }
 
-  const raw = window.localStorage.getItem('shelter-auth');
-  if (!raw) {
-    return null;
-  }
-
   try {
+    const raw = window.localStorage.getItem(authKey);
+    if (!raw) return isDemoMode ? demoAuth : null;
     return JSON.parse(raw) as StoredAuth;
   } catch {
-    return null;
+    return isDemoMode ? demoAuth : null;
   }
 }
 
 export function setStoredAuth(auth: StoredAuth) {
-  window.localStorage.setItem('shelter-auth', JSON.stringify(auth));
+  if (isDemoMode) demoAuth = auth;
+  try {
+    window.localStorage.setItem(authKey, JSON.stringify(auth));
+  } catch (error) {
+    if (!isDemoMode) throw error;
+  }
 }
 
 export function clearStoredAuth() {
-  window.localStorage.removeItem('shelter-auth');
+  if (isDemoMode) demoAuth = createDemoAuth();
+  try {
+    window.localStorage.removeItem(authKey);
+  } catch (error) {
+    if (!isDemoMode) throw error;
+  }
 }
 
 export function hasStoredAuth() {

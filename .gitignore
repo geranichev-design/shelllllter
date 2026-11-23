@@ -1,6 +1,8 @@
 node_modules
 .next
 .next-build
+.next-figma
+.next-figma-build
 dist
 coverage
 .turbo

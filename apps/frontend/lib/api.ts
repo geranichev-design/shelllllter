@@ -1,3 +1,5 @@
+import { isDemoMode } from './demo/config';
+
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://127.0.0.1:3001';
 
 export class ApiError extends Error {
@@ -29,6 +31,11 @@ function getAccessToken() {
 }
 
 export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
+  if (isDemoMode) {
+    const { demoFetch } = await import('./demo/api');
+    return demoFetch<T>(path, init);
+  }
+
   const headers = new Headers(init?.headers);
   if (!headers.has('Content-Type')) {
     headers.set('Content-Type', 'application/json');

@@ -2,6 +2,43 @@
 
 Monorepo foundation for a shelter management system.
 
+## Figma Code
+
+This repository includes a browser-only demo for Figma Code layers. It opens the
+dashboard as a demo DSNS user, without credentials, Docker, PostgreSQL, or a backend.
+
+1. In Figma Design, choose **Code → Clone repository**.
+2. Clone `https://github.com/geranichev-design/shelllllter.git`, branch `main`.
+3. The `.figma/make/install` and `.figma/make/dev` scripts install the frontend and
+   shared UI workspace, then launch the demo on Figma's `$PORT` at `0.0.0.0`.
+   `.mise.toml` specifies Node.js 22 and pnpm 10.5.0.
+
+Figma may add environment-specific publishing and cached-preview scripts during
+its first setup. The repository's build command is `pnpm build:figma`; the built
+Next.js app starts with `pnpm start:figma` and honors `$PORT`.
+
+The demo contains 5 shelters, 16 requests, 7 organizations, and four selectable
+roles. Use the **Демоверсія** bar to switch roles or **Відновити приклад** to reset
+the demo records. Creating requests, reviewing them, and editing shelters works
+locally. Changes persist in this browser's local storage; if sandboxed storage
+is blocked, they last for the current page session. This is a prototype using
+synthetic data, not shared multi-user storage or real authentication.
+
+To try the same demo locally:
+
+```bash
+pnpm install --frozen-lockfile --filter frontend...
+PORT=3010 pnpm dev:figma
+```
+
+Open `http://127.0.0.1:3010`. The root commands `pnpm dev`, `pnpm build`, and
+`pnpm start` also target this demo. Explicit commands below retain the full local
+API workflow. `NEXT_PUBLIC_DEMO_MODE` defaults to disabled outside demo scripts;
+changing it requires restarting the dev server or rebuilding production assets.
+The demo uses separate auth/data storage keys and `.next-figma*` build directories.
+
+Validation: `pnpm test:demo`, `pnpm build:figma`, and `pnpm build:frontend`.
+
 ## Structure
 
 - `apps/backend` - NestJS API with Prisma and JWT auth
@@ -9,7 +46,7 @@ Monorepo foundation for a shelter management system.
 - `packages/ui` - Shared UI primitives
 - `prisma` - Root Prisma schema
 
-## Local setup
+## Full-stack local setup
 
 1. Install dependencies:
 

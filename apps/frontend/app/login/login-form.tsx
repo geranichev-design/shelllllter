@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { apiFetch } from '@/lib/api';
 import { setStoredAuth } from '@/lib/auth';
+import { createDemoAuth, demoAccounts, isDemoMode } from '@/lib/demo/config';
 import { Alert, Button, Input } from '@repo/ui';
 
 type LoginResponse = {
@@ -41,6 +42,22 @@ export function LoginForm() {
     } finally {
       setLoading(false);
     }
+  }
+
+  if (isDemoMode) {
+    return (
+      <div className="space-y-3">
+        <p className="text-[12px] text-[var(--text-secondary)]">Демоверсія з тестовими даними. Оберіть роль для перегляду.</p>
+        {demoAccounts.map(account => (
+          <Button key={account.role} type="button" variant="primary" className="w-full" onClick={() => {
+            setStoredAuth(createDemoAuth(account.role));
+            router.push('/dashboard');
+          }}>
+            {account.label}
+          </Button>
+        ))}
+      </div>
+    );
   }
 
   return (

@@ -13,6 +13,13 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "pnpm dev:figma",
+    "build": "pnpm build:figma",
+    "start": "pnpm start:figma",
+    "test:demo": "node --test scripts/test-demo.cjs",
+    "dev:figma": "NEXT_PUBLIC_DEMO_MODE=true NEXT_DIST_DIR=.next-figma HOST=0.0.0.0 pnpm dev:frontend",
+    "build:figma": "NEXT_PUBLIC_DEMO_MODE=true NEXT_DIST_DIR=.next-figma-build pnpm build:frontend",
+    "start:figma": "NEXT_PUBLIC_DEMO_MODE=true NEXT_DIST_DIR=.next-figma-build HOST=0.0.0.0 pnpm --filter frontend start",
     "db:up": "sh -c 'docker ps --format \"{{.Ports}}\" | grep -q \"5432->5432\" && exit 0; docker compose -p shelter-registry up -d db'",
     "db:down": "docker compose -p shelter-registry down",
     "dev:mock": "pnpm db:up && pnpm prisma:generate && pnpm prisma:migrate && pnpm prisma:seed && (pnpm dev:backend & pnpm dev:frontend & wait)",

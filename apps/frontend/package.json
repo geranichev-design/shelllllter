@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev -H ${HOST:-127.0.0.1}",
-    "build": "NEXT_DIST_DIR=.next-build next build",
-    "start": "NEXT_DIST_DIR=.next-build next start",
+    "build": "NEXT_DIST_DIR=${NEXT_DIST_DIR:-.next-build} next build",
+    "start": "NEXT_DIST_DIR=${NEXT_DIST_DIR:-.next-build} next start -H ${HOST:-127.0.0.1}",
     "clean": "rm -rf .next .next-build",
     "lint": "next lint"
   },

@@ -1,0 +1,676 @@
+{
+  "organizations": [
+    {
+      "id": "demo-organization-1",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "name": "ДСНС України (Центральний апарат)",
+      "type": "DSNS"
+    },
+    {
+      "id": "demo-organization-2",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "name": "Київська обласна адміністрація",
+      "type": "REGIONAL"
+    },
+    {
+      "id": "demo-organization-3",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "name": "Львівська обласна адміністрація",
+      "type": "REGIONAL"
+    },
+    {
+      "id": "demo-organization-4",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "name": "Харківська обласна адміністрація",
+      "type": "REGIONAL"
+    },
+    {
+      "id": "demo-organization-5",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "name": "Департамент цивільного захисту м. Київ",
+      "type": "DEPARTMENT",
+      "parentId": "demo-organization-2"
+    },
+    {
+      "id": "demo-organization-6",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "name": "Управління цивільного захисту м. Львів",
+      "type": "DEPARTMENT",
+      "parentId": "demo-organization-3"
+    },
+    {
+      "id": "demo-organization-7",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "name": "Відділ цивільного захисту м. Харків",
+      "type": "DEPARTMENT",
+      "parentId": "demo-organization-4"
+    }
+  ],
+  "users": [
+    {
+      "id": "demo-user-1",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "balance-holder@example.com",
+      "role": "BALANCE_HOLDER",
+      "orgId": "demo-organization-5"
+    },
+    {
+      "id": "demo-user-2",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "balance-holder2@example.com",
+      "role": "BALANCE_HOLDER",
+      "orgId": "demo-organization-6"
+    },
+    {
+      "id": "demo-user-3",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "balance-holder3@example.com",
+      "role": "BALANCE_HOLDER",
+      "orgId": "demo-organization-7"
+    },
+    {
+      "id": "demo-user-4",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "gov-org@example.com",
+      "role": "GOV_ORG",
+      "orgId": "demo-organization-5"
+    },
+    {
+      "id": "demo-user-5",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "gov-org2@example.com",
+      "role": "GOV_ORG",
+      "orgId": "demo-organization-6"
+    },
+    {
+      "id": "demo-user-6",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "regional@example.com",
+      "role": "REGIONAL",
+      "orgId": "demo-organization-2"
+    },
+    {
+      "id": "demo-user-7",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "regional-lviv@example.com",
+      "role": "REGIONAL",
+      "orgId": "demo-organization-3"
+    },
+    {
+      "id": "demo-user-8",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "regional-kharkiv@example.com",
+      "role": "REGIONAL",
+      "orgId": "demo-organization-4"
+    },
+    {
+      "id": "demo-user-9",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "email": "dsns@example.com",
+      "role": "DSNS",
+      "orgId": "demo-organization-1"
+    }
+  ],
+  "requests": [
+    {
+      "id": "demo-shelterRequest-1",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "NEW",
+      "reviewedById": null,
+      "reviewedAt": null,
+      "rejectionReason": null,
+      "createdById": "demo-user-1",
+      "data": {
+        "name": "Підвал ЗОШ №45",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 320,
+        "latitude": 50.4501,
+        "longitude": 30.5234,
+        "address": "м. Київ, вул. Хрещатик, 1",
+        "description": "Підвальне приміщення школи, обладнане засобами захисту",
+        "ownerOrgId": "demo-organization-5"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-2",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "NEW",
+      "reviewedById": null,
+      "reviewedAt": null,
+      "rejectionReason": null,
+      "createdById": "demo-user-1",
+      "data": {
+        "name": "Паркінг ТРЦ «Гулівер»",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 850,
+        "latitude": 50.4432,
+        "longitude": 30.5069,
+        "address": "м. Київ, вул. Спортивна пл., 1В",
+        "description": "Підземний паркінг, придатний для укриття цивільного населення",
+        "ownerOrgId": "demo-organization-5"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-3",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "NEW",
+      "reviewedById": null,
+      "reviewedAt": null,
+      "rejectionReason": null,
+      "createdById": "demo-user-4",
+      "data": {
+        "name": "Метро «Арсенальна» (вестибюль)",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 1200,
+        "latitude": 50.4484,
+        "longitude": 30.5435,
+        "address": "м. Київ, пл. Арсенальна, 1",
+        "description": "Станція метрополітену, глибина 105 м",
+        "ownerOrgId": "demo-organization-5"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-4",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "NEW",
+      "reviewedById": null,
+      "reviewedAt": null,
+      "rejectionReason": null,
+      "createdById": "demo-user-2",
+      "data": {
+        "name": "Підвал бібліотеки ім. Франка",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 180,
+        "latitude": 49.8395,
+        "longitude": 24.0283,
+        "address": "м. Львів, пр. Свободи, 15",
+        "description": "Підвальне приміщення міської бібліотеки",
+        "ownerOrgId": "demo-organization-6"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-5",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "NEW",
+      "reviewedById": null,
+      "reviewedAt": null,
+      "rejectionReason": null,
+      "createdById": "demo-user-3",
+      "data": {
+        "name": "Укриття у підвалі адмінбудівлі",
+        "type": "STATIC",
+        "accessType": "PRIVATE",
+        "capacity": 60,
+        "latitude": 49.9935,
+        "longitude": 36.2304,
+        "address": "м. Харків, пл. Свободи, 5",
+        "description": "Службове приміщення, доступ за перепустками",
+        "ownerOrgId": "demo-organization-7"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-6",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "NEW",
+      "reviewedById": null,
+      "reviewedAt": null,
+      "rejectionReason": null,
+      "createdById": "demo-user-5",
+      "data": {
+        "name": "Мобільний модуль «Захист-1»",
+        "type": "MOBILE",
+        "accessType": "PUBLIC",
+        "capacity": 45,
+        "latitude": 49.8397,
+        "longitude": 24.0323,
+        "address": "м. Львів, вул. Городоцька, 1",
+        "description": "Мобільний захисний модуль, розгортається за 30 хв",
+        "ownerOrgId": "demo-organization-6"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-7",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "APPROVED",
+      "reviewedById": "demo-user-6",
+      "reviewedAt": "2024-12-10T09:30:00.000Z",
+      "rejectionReason": null,
+      "createdById": "demo-user-1",
+      "data": {
+        "name": "Підземний перехід «Майдан»",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 600,
+        "latitude": 50.4501,
+        "longitude": 30.524,
+        "address": "м. Київ, Майдан Незалежності",
+        "description": "Підземний пішохідний перехід зі стаціонарним обладнанням",
+        "ownerOrgId": "demo-organization-5",
+        "media": [
+          {
+            "id": "maidan-crossing-facade",
+            "name": "Підземний перехід «Майдан» — фасад",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23a7d8f0%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20rx%3D%2212%22%20fill%3D%22%23d8c3a5%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%2264%22%20fill%3D%22%238f7457%22%20opacity%3D%22.92%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22382%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22579%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22776%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22520%22%20y%3D%22438%22%20width%3D%22164%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22%23243b53%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22548%22%20y%3D%22466%22%20width%3D%22108%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22%231f7a8c%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2298%22%20y%3D%22608%22%20width%3D%221004%22%20height%3D%2276%22%20fill%3D%22%23667085%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%A4%D0%B0%D1%81%D0%B0%D0%B4%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%9F%D1%96%D0%B4%D0%B7%D0%B5%D0%BC%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D1%96%D0%B4%20%C2%AB%D0%9C%D0%B0%D0%B9%D0%B4%D0%B0%D0%BD%C2%BB%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3874,
+            "role": "FACADE"
+          },
+          {
+            "id": "maidan-crossing-entrance",
+            "name": "Підземний перехід «Майдан» — вхід",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23a7d8f0%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22214%22%20y%3D%22200%22%20width%3D%22772%22%20height%3D%22456%22%20rx%3D%2218%22%20fill%3D%22%23d8c3a5%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22264%22%20y%3D%22252%22%20width%3D%22672%22%20height%3D%22354%22%20rx%3D%2212%22%20fill%3D%22%238f7457%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M416%20606V388c0-70%2058-126%20130-126h108c72%200%20130%2056%20130%20126v218Z%22%20fill%3D%22%23243b53%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22462%22%20y%3D%22424%22%20width%3D%22278%22%20height%3D%2254%22%20rx%3D%2227%22%20fill%3D%22%231f7a8c%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22748%22%20cy%3D%22504%22%20r%3D%2213%22%20fill%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22368%22%20y%3D%22606%22%20width%3D%22464%22%20height%3D%2252%22%20fill%3D%22%23475569%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22290%22%20y%3D%22658%22%20width%3D%22620%22%20height%3D%2238%22%20fill%3D%22%2364748b%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%92%D1%85%D1%96%D0%B4%20%D0%B4%D0%BE%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%92%D1%85%D1%96%D0%B4%20%C2%B7%20%D0%9A%D0%B8%D1%97%D0%B2%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3372,
+            "role": "ENTRANCE"
+          }
+        ]
+      }
+    },
+    {
+      "id": "demo-shelterRequest-8",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "APPROVED",
+      "reviewedById": "demo-user-6",
+      "reviewedAt": "2024-12-15T14:00:00.000Z",
+      "rejectionReason": null,
+      "createdById": "demo-user-4",
+      "data": {
+        "name": "Укриття «Поштова площа»",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 400,
+        "latitude": 50.4576,
+        "longitude": 30.5184,
+        "address": "м. Київ, Поштова площа, 2",
+        "description": "Капітальне підземне укриття",
+        "ownerOrgId": "demo-organization-5",
+        "media": [
+          {
+            "id": "poshtova-square-facade",
+            "name": "Укриття «Поштова площа» — фасад",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23bcd7ff%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20rx%3D%2212%22%20fill%3D%22%23c9d6c1%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%2264%22%20fill%3D%22%236f8068%22%20opacity%3D%22.92%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22382%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22579%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22776%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22520%22%20y%3D%22438%22%20width%3D%22164%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22%231f2937%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22548%22%20y%3D%22466%22%20width%3D%22108%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22%232563eb%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2298%22%20y%3D%22608%22%20width%3D%221004%22%20height%3D%2276%22%20fill%3D%22%23667085%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%A4%D0%B0%D1%81%D0%B0%D0%B4%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%A3%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%20%C2%AB%D0%9F%D0%BE%D1%88%D1%82%D0%BE%D0%B2%D0%B0%20%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%C2%BB%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3856,
+            "role": "FACADE"
+          },
+          {
+            "id": "poshtova-square-entrance",
+            "name": "Укриття «Поштова площа» — вхід",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23bcd7ff%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22214%22%20y%3D%22200%22%20width%3D%22772%22%20height%3D%22456%22%20rx%3D%2218%22%20fill%3D%22%23c9d6c1%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22264%22%20y%3D%22252%22%20width%3D%22672%22%20height%3D%22354%22%20rx%3D%2212%22%20fill%3D%22%236f8068%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M416%20606V388c0-70%2058-126%20130-126h108c72%200%20130%2056%20130%20126v218Z%22%20fill%3D%22%231f2937%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22462%22%20y%3D%22424%22%20width%3D%22278%22%20height%3D%2254%22%20rx%3D%2227%22%20fill%3D%22%232563eb%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22748%22%20cy%3D%22504%22%20r%3D%2213%22%20fill%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22368%22%20y%3D%22606%22%20width%3D%22464%22%20height%3D%2252%22%20fill%3D%22%23475569%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22290%22%20y%3D%22658%22%20width%3D%22620%22%20height%3D%2238%22%20fill%3D%22%2364748b%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%92%D1%85%D1%96%D0%B4%20%D0%B4%D0%BE%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%92%D1%85%D1%96%D0%B4%20%C2%B7%20%D0%9A%D0%B8%D1%97%D0%B2%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3372,
+            "role": "ENTRANCE"
+          }
+        ]
+      }
+    },
+    {
+      "id": "demo-shelterRequest-9",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "APPROVED",
+      "reviewedById": "demo-user-7",
+      "reviewedAt": "2025-01-05T11:00:00.000Z",
+      "rejectionReason": null,
+      "createdById": "demo-user-2",
+      "data": {
+        "name": "Підвал Ратуші",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 250,
+        "latitude": 49.8423,
+        "longitude": 24.0319,
+        "address": "м. Львів, пл. Ринок, 1",
+        "description": "Підвальне приміщення Ратуші, укріплені стіни",
+        "ownerOrgId": "demo-organization-6",
+        "media": [
+          {
+            "id": "lviv-ratusha-basement-facade",
+            "name": "Підвал Ратуші — фасад",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f7d9b8%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20rx%3D%2212%22%20fill%3D%22%23cfd8dc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%2264%22%20fill%3D%22%23697a82%22%20opacity%3D%22.92%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22382%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22579%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22776%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22520%22%20y%3D%22438%22%20width%3D%22164%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22%23263238%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22548%22%20y%3D%22466%22%20width%3D%22108%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22%23b45309%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2298%22%20y%3D%22608%22%20width%3D%221004%22%20height%3D%2276%22%20fill%3D%22%23667085%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%A4%D0%B0%D1%81%D0%B0%D0%B4%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%9F%D1%96%D0%B4%D0%B2%D0%B0%D0%BB%20%D0%A0%D0%B0%D1%82%D1%83%D1%88%D1%96%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3799,
+            "role": "FACADE"
+          },
+          {
+            "id": "lviv-ratusha-basement-entrance",
+            "name": "Підвал Ратуші — вхід",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f7d9b8%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22214%22%20y%3D%22200%22%20width%3D%22772%22%20height%3D%22456%22%20rx%3D%2218%22%20fill%3D%22%23cfd8dc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22264%22%20y%3D%22252%22%20width%3D%22672%22%20height%3D%22354%22%20rx%3D%2212%22%20fill%3D%22%23697a82%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M416%20606V388c0-70%2058-126%20130-126h108c72%200%20130%2056%20130%20126v218Z%22%20fill%3D%22%23263238%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22462%22%20y%3D%22424%22%20width%3D%22278%22%20height%3D%2254%22%20rx%3D%2227%22%20fill%3D%22%23b45309%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22748%22%20cy%3D%22504%22%20r%3D%2213%22%20fill%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22368%22%20y%3D%22606%22%20width%3D%22464%22%20height%3D%2252%22%20fill%3D%22%23475569%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22290%22%20y%3D%22658%22%20width%3D%22620%22%20height%3D%2238%22%20fill%3D%22%2364748b%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%92%D1%85%D1%96%D0%B4%20%D0%B4%D0%BE%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%92%D1%85%D1%96%D0%B4%20%C2%B7%20%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3378,
+            "role": "ENTRANCE"
+          }
+        ]
+      }
+    },
+    {
+      "id": "demo-shelterRequest-10",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "APPROVED",
+      "reviewedById": "demo-user-8",
+      "reviewedAt": "2025-01-20T10:15:00.000Z",
+      "rejectionReason": null,
+      "createdById": "demo-user-3",
+      "data": {
+        "name": "Метро «Держпром»",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 900,
+        "latitude": 49.9934,
+        "longitude": 36.2311,
+        "address": "м. Харків, пл. Свободи, 1",
+        "description": "Станція метрополітену глибокого залягання",
+        "ownerOrgId": "demo-organization-7",
+        "media": [
+          {
+            "id": "derzhprom-metro-facade",
+            "name": "Метро «Держпром» — фасад",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23b7e4d8%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20rx%3D%2212%22%20fill%3D%22%23e0d4bd%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%2264%22%20fill%3D%22%237a6d59%22%20opacity%3D%22.92%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22382%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22579%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22776%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22520%22%20y%3D%22438%22%20width%3D%22164%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22%23334155%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22548%22%20y%3D%22466%22%20width%3D%22108%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22%230f766e%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2298%22%20y%3D%22608%22%20width%3D%221004%22%20height%3D%2276%22%20fill%3D%22%23667085%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%A4%D0%B0%D1%81%D0%B0%D0%B4%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%9C%D0%B5%D1%82%D1%80%D0%BE%20%C2%AB%D0%94%D0%B5%D1%80%D0%B6%D0%BF%D1%80%D0%BE%D0%BC%C2%BB%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3817,
+            "role": "FACADE"
+          },
+          {
+            "id": "derzhprom-metro-entrance",
+            "name": "Метро «Держпром» — вхід",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23b7e4d8%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22214%22%20y%3D%22200%22%20width%3D%22772%22%20height%3D%22456%22%20rx%3D%2218%22%20fill%3D%22%23e0d4bd%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22264%22%20y%3D%22252%22%20width%3D%22672%22%20height%3D%22354%22%20rx%3D%2212%22%20fill%3D%22%237a6d59%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M416%20606V388c0-70%2058-126%20130-126h108c72%200%20130%2056%20130%20126v218Z%22%20fill%3D%22%23334155%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22462%22%20y%3D%22424%22%20width%3D%22278%22%20height%3D%2254%22%20rx%3D%2227%22%20fill%3D%22%230f766e%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22748%22%20cy%3D%22504%22%20r%3D%2213%22%20fill%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22368%22%20y%3D%22606%22%20width%3D%22464%22%20height%3D%2252%22%20fill%3D%22%23475569%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22290%22%20y%3D%22658%22%20width%3D%22620%22%20height%3D%2238%22%20fill%3D%22%2364748b%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%92%D1%85%D1%96%D0%B4%20%D0%B4%D0%BE%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%92%D1%85%D1%96%D0%B4%20%C2%B7%20%D0%A5%D0%B0%D1%80%D0%BA%D1%96%D0%B2%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3384,
+            "role": "ENTRANCE"
+          }
+        ]
+      }
+    },
+    {
+      "id": "demo-shelterRequest-11",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "REJECTED",
+      "reviewedById": "demo-user-6",
+      "reviewedAt": "2024-11-20T16:45:00.000Z",
+      "rejectionReason": "Приміщення не відповідає нормам ДСТУ 4997:2008 — недостатня висота стелі (менше 2.0 м)",
+      "createdById": "demo-user-1",
+      "data": {
+        "name": "Підвал житлового будинку на Лесі Українки",
+        "type": "STATIC",
+        "accessType": "PRIVATE",
+        "capacity": 40,
+        "latitude": 50.4221,
+        "longitude": 30.5337,
+        "address": "м. Київ, бул. Лесі Українки, 26",
+        "description": "Підвал старого будинку",
+        "ownerOrgId": "demo-organization-5"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-12",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "REJECTED",
+      "reviewedById": "demo-user-7",
+      "reviewedAt": "2025-01-10T13:20:00.000Z",
+      "rejectionReason": "Відсутні документи про право власності та технічний паспорт приміщення",
+      "createdById": "demo-user-5",
+      "data": {
+        "name": "Склад на Городоцькій",
+        "type": "STATIC",
+        "accessType": "PRIVATE",
+        "capacity": 70,
+        "latitude": 49.835,
+        "longitude": 23.983,
+        "address": "м. Львів, вул. Городоцька, 188",
+        "description": "Складське приміщення, потребує переобладнання",
+        "ownerOrgId": "demo-organization-6"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-13",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "REJECTED",
+      "reviewedById": "demo-user-8",
+      "reviewedAt": "2025-02-03T09:00:00.000Z",
+      "rejectionReason": "Розташовано у зоні підтоплення, не придатне для використання як укриття",
+      "createdById": "demo-user-3",
+      "data": {
+        "name": "Підвальне приміщення на Клочківській",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 110,
+        "latitude": 49.9812,
+        "longitude": 36.215,
+        "address": "м. Харків, вул. Клочківська, 192",
+        "description": "Підвал комунальної будівлі",
+        "ownerOrgId": "demo-organization-7"
+      }
+    },
+    {
+      "id": "demo-shelterRequest-14",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "APPROVED",
+      "reviewedById": "demo-user-6",
+      "reviewedAt": "2025-02-12T09:00:00.000Z",
+      "rejectionReason": null,
+      "createdById": "demo-user-4",
+      "data": {
+        "name": "Бомбосховище «Університет»",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 1500,
+        "latitude": 50.4338,
+        "longitude": 30.5197,
+        "address": "м. Київ, вул. Володимирська, 60",
+        "description": "Капітальне бомбосховище в університетському кварталі",
+        "ownerOrgId": "demo-organization-5",
+        "media": [
+          {
+            "id": "university-shelter-facade",
+            "name": "Бомбосховище «Університет» — фасад",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d7c4f2%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20rx%3D%2212%22%20fill%3D%22%23d6dde2%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%2264%22%20fill%3D%22%2370808d%22%20opacity%3D%22.92%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22382%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22579%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22776%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22520%22%20y%3D%22438%22%20width%3D%22164%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22%2322223b%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22548%22%20y%3D%22466%22%20width%3D%22108%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22%237c3aed%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2298%22%20y%3D%22608%22%20width%3D%221004%22%20height%3D%2276%22%20fill%3D%22%23667085%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%A4%D0%B0%D1%81%D0%B0%D0%B4%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%91%D0%BE%D0%BC%D0%B1%D0%BE%D1%81%D1%85%D0%BE%D0%B2%D0%B8%D1%89%D0%B5%20%C2%AB%D0%A3%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82%C2%BB%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3877,
+            "role": "FACADE"
+          },
+          {
+            "id": "university-shelter-entrance",
+            "name": "Бомбосховище «Університет» — вхід",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d7c4f2%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22214%22%20y%3D%22200%22%20width%3D%22772%22%20height%3D%22456%22%20rx%3D%2218%22%20fill%3D%22%23d6dde2%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22264%22%20y%3D%22252%22%20width%3D%22672%22%20height%3D%22354%22%20rx%3D%2212%22%20fill%3D%22%2370808d%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M416%20606V388c0-70%2058-126%20130-126h108c72%200%20130%2056%20130%20126v218Z%22%20fill%3D%22%2322223b%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22462%22%20y%3D%22424%22%20width%3D%22278%22%20height%3D%2254%22%20rx%3D%2227%22%20fill%3D%22%237c3aed%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22748%22%20cy%3D%22504%22%20r%3D%2213%22%20fill%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22368%22%20y%3D%22606%22%20width%3D%22464%22%20height%3D%2252%22%20fill%3D%22%23475569%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22290%22%20y%3D%22658%22%20width%3D%22620%22%20height%3D%2238%22%20fill%3D%22%2364748b%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%92%D1%85%D1%96%D0%B4%20%D0%B4%D0%BE%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%92%D1%85%D1%96%D0%B4%20%C2%B7%20%D0%9A%D0%B8%D1%97%D0%B2%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3372,
+            "role": "ENTRANCE"
+          }
+        ]
+      }
+    },
+    {
+      "id": "demo-shelterRequest-15",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "APPROVED",
+      "reviewedById": "demo-user-7",
+      "reviewedAt": "2025-02-18T12:30:00.000Z",
+      "rejectionReason": null,
+      "createdById": "demo-user-2",
+      "data": {
+        "name": "Підземна парковка «Форум Львів»",
+        "type": "STATIC",
+        "accessType": "PUBLIC",
+        "capacity": 380,
+        "latitude": 49.837,
+        "longitude": 24.046,
+        "address": "м. Львів, вул. Під Дубом, 7Б",
+        "description": "Підземний паркінг торговельного центру, частково потребує ремонту",
+        "ownerOrgId": "demo-organization-6",
+        "media": [
+          {
+            "id": "forum-lviv-parking-facade",
+            "name": "Підземна парковка «Форум Львів» — фасад",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23bcd7ff%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20rx%3D%2212%22%20fill%3D%22%23c9d6c1%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%2264%22%20fill%3D%22%236f8068%22%20opacity%3D%22.92%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22382%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22579%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22776%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22520%22%20y%3D%22438%22%20width%3D%22164%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22%231f2937%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22548%22%20y%3D%22466%22%20width%3D%22108%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22%232563eb%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2298%22%20y%3D%22608%22%20width%3D%221004%22%20height%3D%2276%22%20fill%3D%22%23667085%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%A4%D0%B0%D1%81%D0%B0%D0%B4%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%9F%D1%96%D0%B4%D0%B7%D0%B5%D0%BC%D0%BD%D0%B0%20%D0%BF%D0%B0%D1%80%D0%BA%D0%BE%D0%B2%D0%BA%D0%B0%20%C2%AB%D0%A4%D0%BE%D1%80%D1%83%D0%BC%20%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%C2%BB%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3901,
+            "role": "FACADE"
+          },
+          {
+            "id": "forum-lviv-parking-entrance",
+            "name": "Підземна парковка «Форум Львів» — вхід",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23bcd7ff%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22214%22%20y%3D%22200%22%20width%3D%22772%22%20height%3D%22456%22%20rx%3D%2218%22%20fill%3D%22%23c9d6c1%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22264%22%20y%3D%22252%22%20width%3D%22672%22%20height%3D%22354%22%20rx%3D%2212%22%20fill%3D%22%236f8068%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M416%20606V388c0-70%2058-126%20130-126h108c72%200%20130%2056%20130%20126v218Z%22%20fill%3D%22%231f2937%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22462%22%20y%3D%22424%22%20width%3D%22278%22%20height%3D%2254%22%20rx%3D%2227%22%20fill%3D%22%232563eb%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22748%22%20cy%3D%22504%22%20r%3D%2213%22%20fill%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22368%22%20y%3D%22606%22%20width%3D%22464%22%20height%3D%2252%22%20fill%3D%22%23475569%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22290%22%20y%3D%22658%22%20width%3D%22620%22%20height%3D%2238%22%20fill%3D%22%2364748b%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%92%D1%85%D1%96%D0%B4%20%D0%B4%D0%BE%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%92%D1%85%D1%96%D0%B4%20%C2%B7%20%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3378,
+            "role": "ENTRANCE"
+          }
+        ]
+      }
+    },
+    {
+      "id": "demo-shelterRequest-16",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "status": "APPROVED",
+      "reviewedById": "demo-user-8",
+      "reviewedAt": "2025-03-01T10:45:00.000Z",
+      "rejectionReason": null,
+      "createdById": "demo-user-3",
+      "data": {
+        "name": "Модульне укриття «Салтівка-1»",
+        "type": "MOBILE",
+        "accessType": "PUBLIC",
+        "capacity": 120,
+        "latitude": 49.9975,
+        "longitude": 36.3572,
+        "address": "м. Харків, Салтівський район, квартал 520",
+        "description": "Модульне укриття швидкого розгортання",
+        "ownerOrgId": "demo-organization-7",
+        "media": [
+          {
+            "id": "saltivka-module-1-facade",
+            "name": "Модульне укриття «Салтівка-1» — фасад",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23b7e4d8%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20rx%3D%2212%22%20fill%3D%22%23e0d4bd%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%2264%22%20fill%3D%22%237a6d59%22%20opacity%3D%22.92%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22185%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22382%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22579%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22776%22%20y%3D%22326%22%20width%3D%22132%22%20height%3D%2298%22%20rx%3D%228%22%20fill%3D%22%23eef6fb%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22520%22%20y%3D%22438%22%20width%3D%22164%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22%23334155%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22548%22%20y%3D%22466%22%20width%3D%22108%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22%230f766e%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2298%22%20y%3D%22608%22%20width%3D%221004%22%20height%3D%2276%22%20fill%3D%22%23667085%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%A4%D0%B0%D1%81%D0%B0%D0%B4%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C%D0%BD%D0%B5%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%20%C2%AB%D0%A1%D0%B0%D0%BB%D1%82%D1%96%D0%B2%D0%BA%D0%B0-1%C2%BB%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3882,
+            "role": "FACADE"
+          },
+          {
+            "id": "saltivka-module-1-entrance",
+            "name": "Модульне укриття «Салтівка-1» — вхід",
+            "dataUrl": "data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20x2%3D%220%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23b7e4d8%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22shade%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23000%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22800%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221022%22%20cy%3D%22124%22%20r%3D%2254%22%20fill%3D%22%23fff7d6%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M0%20612C154%20570%20306%20590%20472%20622c178%2034%20346%2028%20526-22%2086-24%20148-33%20202-28v228H0Z%22%20fill%3D%22%2378936a%22%20opacity%3D%22.65%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22214%22%20y%3D%22200%22%20width%3D%22772%22%20height%3D%22456%22%20rx%3D%2218%22%20fill%3D%22%23d9e2ec%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22264%22%20y%3D%22252%22%20width%3D%22672%22%20height%3D%22354%22%20rx%3D%2212%22%20fill%3D%22%23cbd5e1%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M416%20606V388c0-70%2058-126%20130-126h108c72%200%20130%2056%20130%20126v218Z%22%20fill%3D%22%23334155%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22462%22%20y%3D%22424%22%20width%3D%22278%22%20height%3D%2254%22%20rx%3D%2227%22%20fill%3D%22%230f766e%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22748%22%20cy%3D%22504%22%20r%3D%2213%22%20fill%3D%22%23f8fafc%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22368%22%20y%3D%22606%22%20width%3D%22464%22%20height%3D%2252%22%20fill%3D%22%23475569%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22290%22%20y%3D%22658%22%20width%3D%22620%22%20height%3D%2238%22%20fill%3D%22%2364748b%22%2F%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Crect%20x%3D%22132%22%20y%3D%22218%22%20width%3D%22936%22%20height%3D%22390%22%20fill%3D%22url(%23shade)%22%20opacity%3D%22.28%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2272%22%20y%3D%2264%22%20width%3D%22492%22%20height%3D%22126%22%20rx%3D%2218%22%20fill%3D%22%23111827%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22116%22%20fill%3D%22%23fff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2242%22%20font-weight%3D%22700%22%3E%D0%92%D1%85%D1%96%D0%B4%20%D0%B4%D0%BE%20%D1%83%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22104%22%20y%3D%22158%22%20fill%3D%22%23d1d5db%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%3E%D0%92%D1%85%D1%96%D0%B4%20%C2%B7%20%D0%A5%D0%B0%D1%80%D0%BA%D1%96%D0%B2%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+            "mimeType": "image/svg+xml",
+            "size": 3384,
+            "role": "ENTRANCE"
+          }
+        ]
+      }
+    }
+  ],
+  "shelters": [
+    {
+      "id": "demo-shelter-1",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "sourceRequestId": "demo-shelterRequest-7",
+      "name": "Підземний перехід «Майдан»",
+      "type": "STATIC",
+      "accessType": "PUBLIC",
+      "capacity": 600,
+      "latitude": 50.4501,
+      "longitude": 30.524,
+      "status": "NEED",
+      "accountingStatus": "ACCOUNTED",
+      "recordStatus": "ACTIVE",
+      "ownerOrgId": "demo-organization-5"
+    },
+    {
+      "id": "demo-shelter-2",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "sourceRequestId": "demo-shelterRequest-8",
+      "name": "Укриття «Поштова площа»",
+      "type": "STATIC",
+      "accessType": "PUBLIC",
+      "capacity": 400,
+      "latitude": 50.4576,
+      "longitude": 30.5184,
+      "status": "PROJECT",
+      "accountingStatus": "IN_PROGRESS",
+      "recordStatus": "ACTIVE",
+      "ownerOrgId": "demo-organization-5"
+    },
+    {
+      "id": "demo-shelter-3",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "sourceRequestId": "demo-shelterRequest-14",
+      "name": "Бомбосховище «Університет»",
+      "type": "STATIC",
+      "accessType": "PUBLIC",
+      "capacity": 1500,
+      "latitude": 50.4338,
+      "longitude": 30.5197,
+      "status": "OPERATION",
+      "accountingStatus": "ACCOUNTED",
+      "recordStatus": "ACTIVE",
+      "ownerOrgId": "demo-organization-5"
+    },
+    {
+      "id": "demo-shelter-4",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "sourceRequestId": "demo-shelterRequest-15",
+      "name": "Підземна парковка «Форум Львів»",
+      "type": "STATIC",
+      "accessType": "PUBLIC",
+      "capacity": 380,
+      "latitude": 49.837,
+      "longitude": 24.046,
+      "status": "REPAIR",
+      "accountingStatus": "ACCOUNTED",
+      "recordStatus": "SUSPENDED",
+      "ownerOrgId": "demo-organization-6"
+    },
+    {
+      "id": "demo-shelter-5",
+      "createdAt": "2026-11-01T09:00:00.000Z",
+      "updatedAt": "2026-11-01T09:00:00.000Z",
+      "sourceRequestId": "demo-shelterRequest-16",
+      "name": "Модульне укриття «Салтівка-1»",
+      "type": "MOBILE",
+      "accessType": "PUBLIC",
+      "capacity": 120,
+      "latitude": 49.9975,
+      "longitude": 36.3572,
+      "status": "NEED",
+      "accountingStatus": "NEW",
+      "recordStatus": "DRAFT",
+      "ownerOrgId": "demo-organization-7"
+    }
+  ]
+}
