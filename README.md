@@ -6,6 +6,8 @@ Monorepo foundation for a shelter management system.
 
 This repository includes a browser-only demo for Figma Code layers. It opens the
 dashboard as a demo DSNS user, without credentials, Docker, PostgreSQL, or a backend.
+The demo has no login screen: `/login` redirects straight to `/dashboard`.
+Switch roles in the demo bar; signing in or out is not required.
 
 1. In Figma Design, choose **Code → Clone repository**.
 2. Clone `https://github.com/geranichev-design/shelllllter.git`, branch `main`.

@@ -4,6 +4,7 @@ import { AppShell } from '@/app/components/AppShell';
 import { PageHeader, Card } from '@repo/ui';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { clearStoredAuth } from '@/lib/auth';
+import { isDemoMode } from '@/lib/demo/config';
 import { LogOut, Moon, Sun } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -60,7 +61,7 @@ export default function SettingsPage() {
               </div>
             </Card>
           </div>
-          <div>
+          {!isDemoMode ? <div>
             <p className="text-[11px] font-semibold text-[var(--text-ghost)] uppercase tracking-[0.08em] mb-3">
               Обліковий запис
             </p>
@@ -88,7 +89,7 @@ export default function SettingsPage() {
                 </button>
               </div>
             </Card>
-          </div>
+          </div> : null}
         </div>
       </div>
     </AppShell>
